@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiénes somos — Pixel Alquimia</title>
+  <style>
+    :root{
+      --accent-1: #00f2fe;
+      --accent-2: #4facfe;
+      --bg-1: #011a26;
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial;
+      color:#eaf6ff;
+      background: linear-gradient(180deg,#011426 0%, #042a38 60%, #052d44 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    .wrap{
+      width: min(980px, 96vw);
+      background: var(--card-bg);
+      border-radius:14px;
+      padding: clamp(20px, 4.5vw, 40px);
+      box-shadow: 0 14px 36px rgba(0,12,18,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .header { display:flex; gap:14px; align-items:center; margin-bottom:10px; }
+    .logo { width:64px; height:64px; object-fit:contain; background:white; padding:10px; border-radius:12px; box-shadow: 0 6px 18px rgba(1,30,45,0.28); }
+    h1{ margin:0; font-size: clamp(20px, 3.8vw, 36px); font-weight:800; background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    .lead { margin: 6px 0 18px 0; color: rgba(230,250,255,0.95); font-size:14px; }
+
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.007)); border-radius:12px; padding:18px; border:1px solid rgba(255,255,255,0.02); box-shadow: inset 0 1px 0 rgba(255,255,255,0.01); margin-bottom:14px; }
+
+    h3 { margin:0 0 8px 0; font-size:16px; color:#dff8ff }
+    p { margin:0 0 10px 0; color: rgba(220,245,255,0.92); line-height:1.5; font-size:14px; }
+    ul{ margin:8px 0 0 18px; color: rgba(210,240,255,0.95); } li{ margin:8px 0; }
+
+    .meta { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; align-items:center; }
+    .chip{ background: rgba(255,255,255,0.03); padding:8px 12px; border-radius:999px; font-weight:700; font-size:13px; border:1px solid rgba(255,255,255,0.02); }
+
+    .actions { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn { padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:800; background:white; color:#023a50; }
+    .btn.secondary { background:transparent; border:1px solid rgba(255,255,255,0.06); color:#cfeeff; }
+
+    .contact { margin-top:8px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .email { background: rgba(255,255,255,0.06); padding:8px 12px; border-radius:10px; font-weight:700; color:#e9fbff; border:1px solid rgba(255,255,255,0.02); text-decoration:none; }
+
+    footer { margin-top:16px; font-size:13px; color:rgba(200,235,255,0.85) }
+
+    @media (max-width:720px){ .header{ gap:10px } .logo{ width:52px; height:52px; padding:8px } }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main" aria-labelledby="qs-title">
+    <div class="header">
+      <img src="logo_pag.png" alt="Logo Pixel Alquimia" class="logo" />
+      <div>
+        <h1 id="qs-title">Quiénes somos</h1>
+        <div class="lead">Estudio independiente de software y experimentos digitales con énfasis en privacidad y simplicidad.</div>
+      </div>
+    </div>
+
+    <section class="card" aria-labelledby="mision-title">
+      <h3 id="mision-title">Nuestra esencia</h3>
+      <p>Pixel Alquimia es un estudio indie dedicado a crear pequeños proyectos y prototipos con estética cuidada y experiencia ligera. Buscamos que la tecnología sirva sin pedir demasiado a cambio: nada de cuentas obligatorias, nada de rastreo invasivo.</p>
+
+      <div class="meta" aria-hidden="false" style="margin-top:12px">
+        <div class="chip">Representante: <strong>mayadivina2014</strong> (apodo)</div>
+        <div class="chip">Creado: <strong>21 de septiembre de 2025</strong></div>
+        <div class="chip">Equipo: <strong>1 persona</strong> — estudio compuesto únicamente por el representante</div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="privacy-title">
+      <h3 id="privacy-title">Compromiso con la privacidad y la seguridad</h3>
+      <ul>
+        <li><strong>No requerimos cuentas.</strong> Las demos y herramientas que ofrecemos no piden registro ni inicio de sesión.</li>
+        <li><strong>No recopilamos datos personales.</strong> No almacenamos nombres, emails ni otra información identificable de usuarias/os en nuestros proyectos públicos.</li>
+        <li><strong>Sin trackers invasivos.</strong> No instalamos herramientas de seguimiento que perfilen a los usuarios.</li>
+        <li><strong>Cookies mínimas y funcionales.</strong> Si alguna funcionalidad local necesita almacenamiento (por ejemplo, guardar notas en el navegador), se usa solo almacenamiento local y el dato no sale de tu dispositivo.</li>
+        <li><strong>Transparencia.</strong> Si un proyecto en particular requiere datos (opcional), se indicará claramente y se ofrecerá una alternativa sin registro cuando sea posible.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="uso-title">
+      <h3 id="uso-title">Uso responsable</h3>
+      <p>Al usar nuestros proyectos aceptas que el contenido es de carácter experimental. Hacemos el esfuerzo por mantener las demos seguras, pero recomendamos no subir información sensible a prototipos o demos públicas.</p>
+      <p>Para proyectos con más alcance (p. ej. servicios online), publicaremos una política específica y opciones de contacto.</p>
+    </section>
+
+    <section class="card" aria-labelledby="contacto-title">
+      <h3 id="contacto-title">Contacto y representación</h3>
+      <p>El representante público del estudio aparece como <strong>mayadivina2014</strong> (apodo). El nombre real del creador se mantiene privado por seguridad.</p>
+      <p>Contacto oficial de Pixel Alquimia:</p>
+      <div class="contact" aria-label="Correo de contacto">
+        <a class="email" href="mailto:Pixel-Alquimia@protonmail.com">Pixel-Alquimia@protonmail.com</a>
+      </div>
+      <p style="margin-top:10px">Si necesitas comunicarte sobre algo específico del estudio o un proyecto, abre un "issue" en el repo correspondiente indicando que solicitas contacto con el representante, o usa el correo arriba.</p>
+    </section>
+
+    <div class="actions" role="navigation" aria-label="Enlaces">
+      <a class="btn" href="index.html">← Inicio</a>
+      <a class="btn secondary" href="proyectos.html">Ver Proyectos</a>
+      <a class="btn secondary" href="https://github.com/mayadivina2014/calendario-personal-pag" target="_blank" rel="noopener">Repo: Calendario</a>
+    </div>
+
+    <footer>
+      Pixel Alquimia — Estudio independiente · <strong>Protegemos la privacidad de nuestras usuarias/os</strong>.
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Proyectos — Pixel Alquimia</title>
+  <style>
+    :root{
+      --accent-1: #00f2fe;
+      --accent-2: #4facfe;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, "Segoe UI", Roboto, system-ui;
+      color:#eaf6ff;
+      background: linear-gradient(180deg,#011a26 0%, #042c3a 60%, #052f44 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    .wrap{
+      width:min(1040px,95vw);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding: clamp(20px,4vw,34px);
+      box-shadow: 0 12px 36px rgba(0,12,18,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .brand-row { display:flex; gap:12px; align-items:center; }
+    .logo-small { width:48px; height:48px; object-fit:contain; background:white; padding:8px; border-radius:10px; box-shadow: 0 8px 20px rgba(0,8,12,0.25); }
+    header h2{ margin:0; font-size: clamp(20px,3.6vw,28px); font-weight:800; background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    header p{ margin:0; opacity:.9; font-size:13px }
+
+    .grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:16px; }
+
+    .card-proj{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); display:flex; flex-direction:column; gap:10px; transition: transform .22s, box-shadow .22s; }
+    .card-proj:hover{ transform: translateY(-8px); box-shadow: 0 24px 46px rgba(1,20,30,0.36) }
+
+    .thumb{ height:92px; border-radius:8px; background: linear-gradient(135deg,var(--accent-1),var(--accent-2)); display:flex;align-items:center;justify-content:center;font-weight:800;color:#013244; }
+    .meta{ display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .meta .title{ font-weight:700; font-size:15px }
+    .meta .small{ font-size:12px; opacity:.9 }
+
+    .proj-actions{ display:flex; gap:8px; margin-top:auto; }
+    .link-btn{ padding:9px 12px; border-radius:10px; background: rgba(255,255,255,0.95); color:#023a50; text-decoration:none; font-weight:700; border:none; transition: transform .14s; }
+    .link-btn:hover{ transform: translateY(-4px) }
+
+    .back { padding:9px 12px; border-radius:10px; background: transparent; color: #cfeeff; border:1px solid rgba(255,255,255,0.06); text-decoration:none; font-weight:700; }
+
+    footer{ margin-top:18px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    @media (max-width:680px){ header{flex-direction:column;align-items:flex-start} footer{flex-direction:column;align-items:flex-start} }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <div class="brand-row">
+        <img src="logo_pag.png" alt="Logo Pixel Alquimia" class="logo-small" />
+        <div>
+          <h2>Proyectos</h2>
+          <p>Enlaces a demos y repositorios. Abre en una nueva pestaña para ver la demo en GitHub Pages.</p>
+        </div>
+      </div>
+      <div>
+        <a class="back" href="index.html">← Volver</a>
+      </div>
+    </header>
+
+    <section class="grid" aria-label="Lista de proyectos">
+      <article class="card-proj">
+        <div class="thumb">PA</div>
+        <div class="meta">
+          <div class="title">Calendario Personal</div>
+          <div class="small">HTML · CSS · JS</div>
+        </div>
+        <div style="font-size:13px; color:rgba(230,250,255,0.92)">
+          Versión demostración alojada en GitHub Pages — calendario con notas privadas y diseño minimalista.
+        </div>
+        <div class="proj-actions">
+          <a class="link-btn" href="https://mayadivina2014.github.io/calendario-personal-pag/" target="_blank" rel="noopener">Abrir demo</a>
+          <a class="link-btn" href="https://github.com/mayadivina2014/calendario-personal-pag" target="_blank" rel="noopener">Repo</a>
+        </div>
+      </article>
+
+      <article class="card-proj">
+        <div class="thumb">UI</div>
+        <div class="meta">
+          <div class="title">Mini UI Experiments</div>
+          <div class="small">Prototipos</div>
+        </div>
+        <div style="font-size:13px; color:rgba(230,250,255,0.92)">
+          Pequeños experimentos visuales: animaciones fluidas, microinteracciones y mockups para demos.
+        </div>
+        <div class="proj-actions">
+          <a class="link-btn" href="#" target="_blank" rel="noopener">Abrir</a>
+          <a class="link-btn" href="#" target="_blank" rel="noopener">Repo</a>
+        </div>
+      </article>
+
+      <article class="card-proj">
+        <div class="thumb">JS</div>
+        <div class="meta">
+          <div class="title">Scripts y utilidades</div>
+          <div class="small">Node · Front</div>
+        </div>
+        <div style="font-size:13px; color:rgba(230,250,255,0.92)">
+          Snippets, helpers y cosas pequeñas que uso para proyectos personales y bots.
+        </div>
+        <div class="proj-actions">
+          <a class="link-btn" href="#" target="_blank" rel="noopener">Abrir</a>
+          <a class="link-btn" href="#" target="_blank" rel="noopener">Repo</a>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <div style="opacity:.9; font-size:13px">¿Quieres que añada iconos o mini capturas en cada tarjeta?</div>
+      <div>
+        <a class="back" href="https://mayadivina2014.github.io/calendario-personal-pag/" target="_blank" rel="noopener">Ver Calendario</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
