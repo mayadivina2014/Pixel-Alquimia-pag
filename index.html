@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pixel Alquimia</title>
   <style>
     :root{
@@ -15,39 +15,46 @@
       --btn-text: #023a50;
     }
 
+    /* reset / base */
     *{box-sizing:border-box}
-    html,body{height:100%; margin:0}
+    html,body{height:100%; margin:0; -webkit-font-smoothing:antialiased;}
     body{
-      font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial;
+      font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial, Helvetica;
       background:
         radial-gradient(900px 400px at 10% 20%, rgba(0,242,254,0.06), transparent),
         radial-gradient(700px 300px at 90% 80%, rgba(79,172,254,0.04), transparent),
         linear-gradient(180deg,var(--bg-1) 0%, #062f44 100%);
       color:var(--text);
-      -webkit-font-smoothing:antialiased;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:28px;
-      overflow:hidden;
+      padding:28px 18px;
+      min-height:100vh;
+      /* allow scroll on small devices */
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
     }
 
+    /* card container */
     .card{
-      width:min(980px,94vw);
+      width:100%;
+      max-width:980px;
       background:var(--card-bg);
       border-radius:16px;
-      padding:clamp(22px,4.2vw,48px);
+      padding:clamp(18px,4.5vw,44px);
       box-shadow: 0 12px 36px rgba(0,12,18,0.6);
       position:relative;
-      overflow:visible;
+      overflow:visible; /* keep waves/bubbles visible */
       border:1px solid rgba(255,255,255,0.02);
+      margin:12px;
     }
 
+    /* branding */
     .brand{
       display:flex;
       gap:14px;
       align-items:center;
-      margin-bottom:10px;
+      margin-bottom:8px;
     }
     .logo{
       width:64px;
@@ -60,10 +67,13 @@
       box-shadow: 0 6px 18px rgba(1,30,45,0.28);
       flex:0 0 64px;
     }
+    .brand-text{
+      min-width:0;
+    }
 
     h1 {
       margin:0;
-      font-size:clamp(34px,5vw,64px);
+      font-size:clamp(28px,5vw,48px);
       font-weight:800;
       line-height:1;
       background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
@@ -72,6 +82,9 @@
       background-size:200% 100%;
       animation: shimmer 6s linear infinite;
       text-shadow: 0 8px 30px rgba(3,40,50,0.18);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     @keyframes shimmer {
       0%{background-position:0% 50%}
@@ -79,14 +92,21 @@
       100%{background-position:0% 50%}
     }
 
-    .lead{ margin:8px 0 18px 0; font-size:15px; max-width:64ch; color:rgba(230,250,255,0.94) }
+    .lead{
+      margin:8px 0 18px 0;
+      font-size:15px;
+      max-width:64ch;
+      color:rgba(230,250,255,0.94);
+      line-height:1.4;
+    }
 
-    .actions{ display:flex; gap:12px; flex-wrap:wrap }
+    /* actions */
+    .actions{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
     .btn{
       appearance:none;
       display:inline-grid;
       place-items:center;
-      padding:12px 18px;
+      padding:10px 16px;
       border-radius:12px;
       background:linear-gradient(180deg, #ffffff, #f4f8fb);
       color:var(--btn-text);
@@ -96,20 +116,22 @@
       cursor:pointer;
       box-shadow: 0 10px 26px rgba(2,19,30,0.16), inset 0 -1px 0 rgba(255,255,255,0.6);
       transition: transform .16s ease, box-shadow .16s ease;
+      font-size:14px;
     }
-    .btn:hover{ transform:translateY(-6px); box-shadow: 0 20px 46px rgba(2,19,30,0.22) }
+    .btn:hover{ transform:translateY(-4px); box-shadow: 0 18px 40px rgba(2,19,30,0.22) }
     .btn:active{ transform:translateY(-2px) }
-
     .btn.ghost{
       background:transparent;
       border:1px solid rgba(255,255,255,0.06);
       color:var(--text);
+      box-shadow:none;
     }
 
+    /* preview / panels */
     .preview{
-      margin-top:22px;
+      margin-top:12px;
       display:grid;
-      grid-template-columns:1fr 220px;
+      grid-template-columns: 1fr 220px;
       gap:18px;
       align-items:center;
     }
@@ -119,6 +141,17 @@
       padding:14px;
       border:1px solid rgba(255,255,255,0.02);
     }
+    .preview-hero{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .badge{
+      width:64px; height:64px; border-radius:12px;
+      background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:grid; place-items:center; font-weight:800; color:#013244; flex:0 0 64px;
+    }
+
     .mock{
       height:150px;
       border-radius:10px;
@@ -128,10 +161,11 @@
       font-weight:800;
       color:#013244;
       background:linear-gradient(90deg, rgba(255,255,255,0.94), rgba(255,255,255,0.98));
-      transition: transform .6s cubic-bezier(.2,.9,.25,1);
+      transition: transform .4s cubic-bezier(.2,.9,.25,1);
     }
-    .card:hover .mock{ transform: translateY(-8px) }
+    .card:hover .mock{ transform: translateY(-6px) }
 
+    /* decorative waves & bubbles */
     .waves{
       position:absolute;
       left:0; right:0; bottom:-8%;
@@ -145,49 +179,62 @@
       position:absolute;
       inset:0;
       pointer-events:none;
-      overflow:hidden;
+      overflow:visible;
     }
 
-    @keyframes rise {
-      0%{ transform: translateY(0) scale(.8); opacity:0 }
-      6%{ opacity:.85 }
-      100%{ transform: translateY(-120vh) scale(1.1); opacity:0 }
+    /* reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      .mock, .btn { transition: none !important; }
+      .card:hover .mock { transform: none !important; }
     }
 
-    a:focus, button:focus { outline: 3px solid rgba(0,242,254,0.18); outline-offset:4px; border-radius:8px }
-
+    /* responsive tweaks */
+    @media (max-width:920px){
+      .preview{ grid-template-columns:1fr 200px; }
+      .mock{ height:140px; }
+    }
     @media (max-width:720px){
       .preview{ grid-template-columns:1fr; }
       .mock{ height:120px }
-      .logo{ width:56px; height:56px; padding:8px }
+      .logo{ width:56px; height:56px; padding:8px; flex:0 0 56px; }
+      h1{ font-size:clamp(22px,6vw,34px); white-space:normal; }
+      .actions{ gap:10px; }
+      .btn{ padding:10px 12px; font-size:13px; }
+      .card{ padding:18px; border-radius:14px; }
     }
+
+    /* focus outline accessible */
+    a:focus, button:focus { outline: 3px solid rgba(0,242,254,0.18); outline-offset:4px; border-radius:8px }
+
+    /* small utility */
+    .muted{ font-size:13px; opacity:.92; margin-top:8px }
   </style>
 </head>
 <body>
   <main class="card" role="main" aria-labelledby="site-title">
     <div class="brand" aria-hidden="false">
       <img src="logo_pag.png" alt="Logo Pixel Alquimia" class="logo" id="logoImage" />
-      <div>
+      <div class="brand-text">
         <h1 id="site-title">Pixel Alquimia</h1>
-        <div style="font-size:13px; opacity:.92; margin-top:8px">Prototipos y demos — privacidad y estética acuática.</div>
+        <div class="muted">Prototipos y demos — privacidad y estética acuática.</div>
       </div>
     </div>
 
     <p class="lead">Proyectos pequeños con foco en experiencia y seguridad: nada de cuentas obligatorias ni trackers invasivos. Explora los proyectos o escribe si necesitas algo.</p>
 
     <nav class="actions" aria-label="Accesos principales">
-      <a class="btn" href="proyectos.html" id="btnProject">➤ Ver Proyectos</a>
-      <a class="btn ghost" href="quien-somos.html" id="btnAbout">ℹ️ Quiénes somos</a>
+      <a class="btn" href="proyectos.html" id="btnProject" role="button">➤ Ver Proyectos</a>
+      <a class="btn ghost" href="quien-somos.html" id="btnAbout" role="button">ℹ️ Quiénes somos</a>
       <a class="btn ghost" href="https://mayadivina2014.github.io/calendario-personal-pag/" target="_blank" rel="noopener">📆 Calendario</a>
     </nav>
 
     <div class="preview" aria-hidden="true">
       <div class="panel">
-        <div style="display:flex; gap:12px; align-items:center;">
-          <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));display:grid;place-items:center;font-weight:800;color:#013244">PA</div>
-          <div>
-            <div style="font-weight:700">Pixel Alquimia</div>
-            <div style="opacity:.9; font-size:13px">UI experiments · mini apps · prototipos</div>
+        <div class="preview-hero">
+          <div class="badge" aria-hidden="true">PA</div>
+          <div style="min-width:0">
+            <div style="font-weight:700; font-size:15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Pixel Alquimia</div>
+            <div style="opacity:.9; font-size:13px; margin-top:4px;">UI experiments · mini apps · prototipos</div>
           </div>
         </div>
         <div style="margin-top:12px; font-size:13px; color:rgba(230,250,255,0.92)">
@@ -222,55 +269,75 @@
         return;
       }
 
-      const BUBBLE_COUNT = Math.min(Math.max(Math.round(window.innerWidth / 80), 8), 28);
       const rand = (min, max) => Math.random() * (max - min) + min;
+      const getBubbleCount = () => Math.min(Math.max(Math.round(window.innerWidth / 80), 6), 24);
 
-      bubblesContainer.innerHTML = '';
+      let currentCount = 0;
+      let bubbleEls = [];
 
-      for (let i = 0; i < BUBBLE_COUNT; i++) {
-        const el = document.createElement('span');
-        const size = Math.round(rand(6, 28));
-        const left = rand(0, 100);
-        const duration = rand(7, 18);
-        const delay = rand(0, 6);
-        const opacity = rand(0.04, 0.18);
-        el.className = 'bubble';
-        Object.assign(el.style, {
-          position: 'absolute',
-          bottom: '-10vh',
-          left: left + '%',
-          width: size + 'px',
-          height: size + 'px',
-          borderRadius: '50%',
-          background: 'rgba(255,255,255,0.08)',
-          boxShadow: '0 6px 18px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.02)',
-          opacity: opacity,
-          transform: 'translateY(0) scale(0.9)',
-          pointerEvents: 'none',
-          animationName: 'rise',
-          animationTimingFunction: 'linear',
-          animationIterationCount: 'infinite',
-          animationDuration: duration + 's',
-          animationDelay: delay + 's',
-          willChange: 'transform, opacity'
-        });
-        el.style.setProperty('--drift', (rand(-6, 6)) + '%');
-        bubblesContainer.appendChild(el);
+      function clearBubbles() {
+        bubbleEls.forEach(el => el.remove());
+        bubbleEls = [];
+        currentCount = 0;
       }
 
-      const styleEl = document.createElement('style');
-      styleEl.textContent = `
-        @keyframes rise {
-          0% { transform: translateY(0) translateX(0) scale(.9); opacity: 0; }
-          6% { opacity: .8; }
-          50% { transform: translateY(-60vh) translateX(var(--drift)) scale(1); opacity: .9; }
-          100% { transform: translateY(-120vh) translateX(calc(var(--drift) * 1.4)) scale(1.05); opacity: 0; }
+      function createBubbles(count) {
+        clearBubbles();
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement('span');
+          const size = Math.round(rand(6, 28));
+          const left = rand(0, 100);
+          const duration = rand(8, 18);
+          const delay = rand(0, 6);
+          const opacity = rand(0.04, 0.18);
+          el.className = 'bubble';
+          Object.assign(el.style, {
+            position: 'absolute',
+            bottom: '-10vh',
+            left: left + '%',
+            width: size + 'px',
+            height: size + 'px',
+            borderRadius: '50%',
+            background: 'rgba(255,255,255,0.08)',
+            boxShadow: '0 6px 18px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.02)',
+            opacity: opacity,
+            transform: 'translateY(0) scale(0.9)',
+            pointerEvents: 'none',
+            animationName: 'rise',
+            animationTimingFunction: 'linear',
+            animationIterationCount: 'infinite',
+            animationDuration: duration + 's',
+            animationDelay: delay + 's',
+            willChange: 'transform, opacity',
+            zIndex: 1
+          });
+          el.style.setProperty('--drift', (rand(-6, 6)) + '%');
+          bubblesContainer.appendChild(el);
+          bubbleEls.push(el);
         }
-      `;
-      document.head.appendChild(styleEl);
+        currentCount = count;
+      }
 
+      // append keyframes to head (only once)
+      (function appendRiseKeyframes() {
+        const styleEl = document.createElement('style');
+        styleEl.textContent = `
+          @keyframes rise {
+            0% { transform: translateY(0) translateX(0) scale(.9); opacity: 0; }
+            6% { opacity: .8; }
+            50% { transform: translateY(-60vh) translateX(var(--drift)) scale(1); opacity: .9; }
+            100% { transform: translateY(-120vh) translateX(calc(var(--drift) * 1.4)) scale(1.05); opacity: 0; }
+          }
+        `;
+        document.head.appendChild(styleEl);
+      })();
+
+      // initial create
+      createBubbles(getBubbleCount());
+
+      // pointer interactions for accessibility / keyboard
       document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('pointerenter', () => btn.style.transform = 'translateY(-6px) scale(1.01)');
+        btn.addEventListener('pointerenter', () => btn.style.transform = 'translateY(-4px) scale(1.01)');
         btn.addEventListener('pointerleave', () => btn.style.transform = '');
         btn.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
@@ -279,6 +346,7 @@
         });
       });
 
+      // logo fallback on error
       const logo = document.getElementById('logoImage');
       if (logo) {
         logo.addEventListener('error', () => {
@@ -301,19 +369,28 @@
         }, { once: true });
       }
 
-      // Ajusta cantidad de burbujas al redimensionar (ligero throttle)
+      // responsive: regenerate bubbles on resize (throttled)
       let resizeTimer = null;
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-          const newCount = Math.min(Math.max(Math.round(window.innerWidth / 80), 8), 28);
-          if (newCount !== BUBBLE_COUNT) {
-            // recarga la página para re-calcular burbujas (simple y fiable)
-            // no recargar si usuario está interactuando con teclado con reduced-motion
-            location.reload();
+          const newCount = getBubbleCount();
+          if (newCount !== currentCount) {
+            createBubbles(newCount);
           }
-        }, 300);
+        }, 220);
       });
+
+      // reduce animation activity on low-power devices
+      // (if battery API available and saving, reduce)
+      if (navigator.getBattery) {
+        navigator.getBattery().then(batt => {
+          if (batt.saveBattery || batt.level < 0.25) {
+            clearBubbles();
+          }
+        }).catch(()=>{/* ignore */});
+      }
+
     })();
   </script>
 </body>
